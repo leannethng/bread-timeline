@@ -19,6 +19,18 @@ let breadSteps =
 }
 ;
 
+//option to put data in an array? 
+// let breadSteps = [
+// {
+//   "stage" : "prep",
+//   "time" : 0,
+// },
+// {
+//   "stage" : "bulkFerm",
+//   "time" : 0,
+// }
+// ]
+
 // Method to add to the button when clicked
 // This will be adding the inputs to an object
 function saveInputs(e){
