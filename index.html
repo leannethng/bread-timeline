@@ -6,19 +6,18 @@
     <title>Bread Timeline</title>
   </head>
   <body>
-    <form>
-      <div class="breadInputs">
-        <label for="prepTime">Prep</label>
-        <input type="int" id="prepTime" placeholder="0" /> hr/s
-      </div>
-      <div class="breadInputs">
-        <label for="BulkFermTime">Bulk Fermentation</label>
-        <input type="int" id="BulkFermTime" placeholder="0" /> hr/s
-      </div>
-      <div class="breadInputs">
-        <button id="btn" class="inputButton">Click to Add</button>
-      </div>
-    </form>
+    <div class="breadInputs">
+      <label for="prepTime">Prep</label>
+      <input type="int" id="prepTime" name="breadInputs" placeholder="0" /> hr/s
+
+      <label for="BulkFermTime">Bulk Fermentation</label>
+      <input type="int" id="BulkFermTime" name="breadInputs" placeholder="0" />
+      hr/s
+
+      <!-- <button id="btn" class="inputButton">Click to Add</button> -->
+    </div>
+
+    <div class="output"></div>
     <script src="bread.js"></script>
   </body>
 </html>
