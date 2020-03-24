@@ -9,35 +9,41 @@ const output = document.querySelector('.output');
 //Grabbing the input values
 const inputs = Array.from(document.querySelectorAll('[name="breadInputs"]'));
 
-const prepTime = document.querySelector('#prepTime');
-const bulkFermTime = document.querySelector('#BulkFermTime');
+// const prepTime = document.querySelector('#prepTime');
+// const bulkFermTime = document.querySelector('#BulkFermTime');
 
-let breadSteps = 
-{
-  prep: 0,
-  bulkFerm:0,
-}
-;
+// let breadSteps = 
+// {
+//   prep: 0,
+//   bulkFerm:0,
+// }
+// ;
 
 //option to put data in an array? 
-// let breadSteps = [
-// {
-//   "stage" : "prep",
-//   "time" : 0,
-// },
-// {
-//   "stage" : "bulkFerm",
-//   "time" : 0,
-// }
-// ]
+let breadSteps = [
+{
+  "name" : "Prep",
+  "time" : 0,
+  "id": "prep"
+},
+{
+  "name" : "Bulk Fermentation",
+  "time" : 0,
+  "id" : "bulkFerm",
+}
+]
 
 // Method to add to the button when clicked
 // This will be adding the inputs to an object
 function saveInputs(e){
   e.preventDefault(); //To stop the form submitting
+  // console.log(time);
+  breadSteps.findIndex(obj => obj.time === inputs.value);
+
+  // breadSteps = { ...breadSteps[timeValue]} 
+
   
-  breadSteps.prep = prepTime.value,
-  breadSteps.bulkFerm = bulkFermTime.value,
+  // breadSteps.bulkFerm = bulkFermTime.value,
   
   // document.forms[0].reset();
   //saving to localStorage
