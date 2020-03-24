@@ -4,7 +4,6 @@ const inputButton = document.querySelector('.inputButton')
 
 //creating div bars for timeline
 const output = document.querySelector('.output');
-const addDiv = document.createElement('div');
 
 
 //Grabbing the input values
@@ -29,17 +28,35 @@ function saveInputs(e){
   breadSteps.bulkFerm = bulkFermTime.value,
   
   // document.forms[0].reset();
-    //saving to localStorage
+  //saving to localStorage
   localStorage.setItem('MyBreadTimeline', JSON.stringify(breadSteps) );
+
   console.log(breadSteps);
   return breadSteps;
 
 }
 
-console.log(breadSteps)
+
 
 // Listening for input
 inputs.forEach(input => input.addEventListener('input', saveInputs));
 // Listening for click on the button
 // inputButton.addEventListener('click', saveInputs)
 
+
+
+//-------
+function generateTimeline(data){
+const addDiv = document.createElement('div');
+addDiv.classList.add(`step`);
+
+console.log(data.prep)
+return addDiv;
+}
+
+let step = generateTimeline(breadSteps);
+
+// addDiv.innerHTML = step;
+output.insertAdjacentElement('afterbegin', step);
+
+// I need to listen for the inputs for the creation of the divs too so they will update. 
