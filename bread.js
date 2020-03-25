@@ -1,17 +1,15 @@
-console.log('I work!')
-// Grabbing the button
-const inputButton = document.querySelector('.inputButton')
-
 //creating div bars for timeline
 const output = document.querySelector('.output');
 
-
-//Grabbing the input values
+//Grabbing the input values to use on the event listener
 const inputs = Array.from(document.querySelectorAll('[name="breadInputs"]'));
 
+//Grabbing individual inputs to match with the object values, this likely should be streamlined
 const prepTime = document.querySelector('#prepTime');
 const bulkFermTime = document.querySelector('#BulkFermTime');
 
+
+// My initial data object
 let breadSteps = 
 {
   prep: 0,
@@ -19,56 +17,47 @@ let breadSteps =
 }
 ;
 
-//option to put data in an array? 
-// let breadSteps = [
-// {
-//   "stage" : "prep",
-//   "time" : 0,
-// },
-// {
-//   "stage" : "bulkFerm",
-//   "time" : 0,
-// }
-// ]
-
-// Method to add to the button when clicked
-// This will be adding the inputs to an object
+// Method for event listener action
 function saveInputs(e){
   e.preventDefault(); //To stop the form submitting
   
+  // Saving over the values of each stage with the values entered into the input
   breadSteps.prep = prepTime.value,
   breadSteps.bulkFerm = bulkFermTime.value,
   
-  // document.forms[0].reset();
-  //saving to localStorage
-  localStorage.setItem('MyBreadTimeline', JSON.stringify(breadSteps) );
-
   console.log(breadSteps);
+  
+  // returning the object with new values
   return breadSteps;
 
 }
 
-
-
-// Listening for input
+// Listening for input into the fields then running the saveInputs method
 inputs.forEach(input => input.addEventListener('input', saveInputs));
-// Listening for click on the button
-// inputButton.addEventListener('click', saveInputs)
 
+console.log(breadSteps);
 
 
 //-------
+// Try to write out the data this with be the method for the event handler
 function generateTimeline(data){
-const addDiv = document.createElement('div');
-addDiv.classList.add(`step`);
-
-console.log(data.prep)
+  const addDiv = document.createElement('p');
+  addDiv.innerText = data.bulkFerm;
+// for (value in breadSteps){  
+// const addDiv = document.createElement('p');
+// }
+console.log(addDiv);
 return addDiv;
 }
 
-let step = generateTimeline(breadSteps);
+const steps = generateTimeline(breadSteps);
 
-// addDiv.innerHTML = step;
-output.insertAdjacentElement('afterbegin', step);
+output.insertAdjacentElement('afterbegin',steps );
+
+
+
 
 // I need to listen for the inputs for the creation of the divs too so they will update. 
+
+
+
