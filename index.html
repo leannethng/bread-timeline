@@ -4,19 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bread Timeline</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="breadInputs">
-      <label for="prepTime">Prep</label>
-      <input type="int" id="prepTime" name="breadInputs" placeholder="0" /> hr/s
-
-      <label for="BulkFermTime">Bulk Fermentation</label>
-      <input type="int" id="BulkFermTime" name="breadInputs" placeholder="0" />
-      hr/s
-      <!-- <button id="btn" class="inputButton">Click to Add</button> -->
+      <div class="breadInput">
+        <label for="prepTime">Prep</label>
+        <input type="number" id="prepTime" name="breadInputs" placeholder="0" />
+        hr/s
+      </div>
+      <div class="breadInput">
+        <label for="BulkFermTime">Bulk Fermentation</label>
+        <input
+          type="number"
+          id="BulkFermTime"
+          name="breadInputs"
+          placeholder="0"
+        />
+        hr/s
+      </div>
+      <div class="output"></div>
     </div>
 
-    <div class="output"></div>
     <script src="bread.js"></script>
   </body>
 </html>
