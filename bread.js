@@ -22,14 +22,14 @@ const inputs = Array.from(document.querySelectorAll('[name="breadInputs"]'));
 //option to put data in an array? 
 let breadSteps = [
 {
-  "name" : "Prep",
-  "time" : 0,
-  "id": "prep"
+  name : "Prep",
+  time : 0,
+  id: "prepTime"
 },
 {
-  "name" : "Bulk Fermentation",
-  "time" : 0,
-  "id" : "bulkFerm",
+  name : "Bulk Fermentation",
+  time : 0,
+  id : "BulkFermTime",
 }
 ]
 
@@ -38,16 +38,23 @@ let breadSteps = [
 function saveInputs(e){
   e.preventDefault(); //To stop the form submitting
   // console.log(time);
-  breadSteps.findIndex(obj => obj.time === inputs.value);
+  for (i = 0; i < breadSteps.length; i++){
+    // if the id of the object matches the input name
+    // if(breadSteps[i].id === )
+    // breadSteps[i].time = 
+    console.log(`${breadSteps[i].name}: ${breadSteps[i].time}`);
+  }
 
-  // breadSteps = { ...breadSteps[timeValue]} 
+  // breadSteps = breadSteps.map(p => p.name === inputs.classList)
+// Example
+  // const newProjects = projects.map(p =>
+  //   p.value === 'jquery-ui'
+  //     ? { ...p, desc: 'new description' }
+  //     : p
+  // );
 
   
-  // breadSteps.bulkFerm = bulkFermTime.value,
-  
-  // document.forms[0].reset();
-  //saving to localStorage
-  localStorage.setItem('MyBreadTimeline', JSON.stringify(breadSteps) );
+
 
   console.log(breadSteps);
   return breadSteps;
@@ -72,9 +79,9 @@ console.log(data.prep)
 return addDiv;
 }
 
-let step = generateTimeline(breadSteps);
+
 
 // addDiv.innerHTML = step;
-output.insertAdjacentElement('afterbegin', step);
+output.insertAdjacentElement('afterbegin', generateTimeline(breadSteps));
 
 // I need to listen for the inputs for the creation of the divs too so they will update. 
