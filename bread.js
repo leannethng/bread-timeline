@@ -25,7 +25,10 @@ function saveInputs(e){
   breadSteps.prep = prepTime.value;
   breadSteps.bulkFerm = bulkFermTime.value;
 
+  // Logging the values for each input
+  inputs.forEach(input => console.log(input.value));
 
+  // Outputting the data, only hooked up to prepTime currently
   output.innerHTML = prepTime.value;
   output.style.width = (prepTime.value * 10) + "%";
   console.log(breadSteps);
