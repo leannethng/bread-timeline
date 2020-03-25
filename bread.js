@@ -25,13 +25,21 @@ function saveInputs(e){
   breadSteps.prep = prepTime.value;
   breadSteps.bulkFerm = bulkFermTime.value;
 
+  let myDiv = document.createElement('div');
   // Logging the values for each input
-  inputs.forEach(input => console.log(input.value));
+  inputs.forEach(function(input){
+    console.log(input.value)
+    myDiv.innerHTML = input.value;
+    myDiv.style.width = (input.value) + "%";
+   return myDiv
+  });
+  console.log(myDiv)
+  output.appendChild(myDiv);
 
   // Outputting the data, only hooked up to prepTime currently
-  output.innerHTML = prepTime.value;
-  output.style.width = (prepTime.value * 10) + "%";
-  console.log(breadSteps);
+  // output.innerHTML = prepTime.value;
+  // output.style.width = (prepTime.value * 10) + "%";
+  // console.log(breadSteps);
   
   // returning the object with new values
   return breadSteps;
