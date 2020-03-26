@@ -1,5 +1,47 @@
 body {
   min-height: 100vh;
-  display: grid;
+  /* display: grid; */
   align-items: center;
+}
+.breadInputs {
+  top: 0;
+  left: 0;
+  width: 280px;
+  padding: 40px;
+  margin: 20px 0 0 0;
+}
+.breadInput {
+  margin: 20px 0 0 0;
+}
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+label span {
+  float: right;
+  font-style: italic;
+}
+
+.output {
+  display: flex;
+  padding: 0 0 0 40px;
+}
+
+.timing {
+  display: flex;
+}
+
+.hour {
+  list-style: none;
+  width: 2%;
+}
+.timeLineItem {
+  border: 1px solid #000;
+  width: 0%;
 }
