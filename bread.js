@@ -9,13 +9,18 @@ const prepTime = document.querySelector('#prepTime');
 const bulkFermTime = document.querySelector('#BulkFermTime');
 
 
+// //Creating divs
+let prepDiv = document.createElement('div');prepDiv.classList.add('timeline');
+output.appendChild(prepDiv);
+
+// let myDiv = document.createElement('div');
+// output.appendChild(myDiv);
+
 // My initial data object
-let breadSteps = 
-{
+let breadSteps = {
   prep: 0,
   bulkFerm:0,
-}
-;
+};
 
 // Method for event listener action
 function saveInputs(e){
@@ -25,25 +30,26 @@ function saveInputs(e){
   breadSteps.prep = prepTime.value;
   breadSteps.bulkFerm = bulkFermTime.value;
 
-  let myDiv = document.createElement('div');
+  
   // Logging the values for each input
-  inputs.forEach(function(input){
+  inputs.forEach( function(input){
     console.log(input.value)
-    myDiv.innerHTML = input.value;
-    myDiv.style.width = (input.value) + "%";
-   return myDiv
+  //   myDiv.innerHTML = input.value;
+  //   myDiv.style.width = (input.value) + "%";
+  //  return myDiv
   });
-  console.log(myDiv)
-  output.appendChild(myDiv);
+  // console.log(myDiv)
+
 
   // Outputting the data, only hooked up to prepTime currently
-  // output.innerHTML = prepTime.value;
-  // output.style.width = (prepTime.value * 10) + "%";
+ 
+  prepDiv.innerHTML = prepTime.value;
+  prepDiv.style.width = (prepTime.value * 2) + "%";
+  
   // console.log(breadSteps);
   
   // returning the object with new values
   return breadSteps;
-
 }
 
 // Listening for input into the fields then running the saveInputs method
