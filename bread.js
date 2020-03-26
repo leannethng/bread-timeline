@@ -37,16 +37,16 @@ function createView() {
   // Create timeline elements, likely li items for i in timeLineHours create a li
   timeLine.innerHTML = "";
   for(let i = 0; i < timeLineHours; i++){
+ 
     console.log('Total:', timeLineHours); 
     timeLine.innerHTML += `<li class="hour">${i + startTime}</li>`
   };
-
 
   //Clear output div
   output.innerHTML = "";
   //Map through each object in data structure and return template 
   const view = breadSteps.map(step => {
-    return `<div class="${step.id} timeLineItem" style='width: ${step.time*2}%'>
+    return `<div class="${step.id} timeLineItem" style='width: ${step.time * 2}%'>
               <p>${step.name}</p>
               <p>${step.time}</p>
             </div>`;
@@ -67,7 +67,6 @@ function updateView(event) {
   });
 
   // Time can then be a variable that will be changed with the start making parameter.
- 
   if (event.target.id === 'time') {
     startTime = parseInt(event.target.value);
     console.log(startTime);
