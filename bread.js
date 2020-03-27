@@ -26,21 +26,39 @@ let breadSteps = [
   }
 ];
 
-let startTime = 0
+let startTime = 1;
+
 
 function createView() {
   // Summing the total hours to create the timeline
   var timeLineHours = breadSteps.reduce(function(prev, cur) {
     return prev + cur.time;
   }, 0);
- 
+
+  let counter = 0;
   // Create timeline elements, likely li items for i in timeLineHours create a li
   timeLine.innerHTML = "";
-  for(let i = 0; i < timeLineHours; i++){
+  for(let i = 0; i < timeLineHours; i++){ 
  
-    console.log('Total:', timeLineHours); 
-    timeLine.innerHTML += `<li class="hour">${i + startTime}</li>`
+    if(`${i + startTime}` <= 12){
+    // console.log(`i: ${i} startTime: ${startTime}`); 
+    timeLine.innerHTML += `<li class="hour">${i + startTime}</li>`;
+    // } else if (`${i + startTime}` <= 24) {
+    //   timeLine.innerHTML += `<li class="hour">${(i + startTime)-12}</li>`;  
+    // } else if (`${i + startTime}` <= 48) {
+    //   timeLine.innerHTML += `<li class="hour">${(i + startTime-(12 * 2))}</li>`; 
+    // } 
+    } else {
+      console.log(`counter: ${counter}`);
+      timeLine.innerHTML += `<li class="hour">${(i + startTime-(12 * `${counter}`))}</li>`;
+    };
+
+    if(`${i + startTime}` % 12 === 0){
+      counter ++; 
+    };
   };
+
+
 
   //Clear output div
   output.innerHTML = "";
