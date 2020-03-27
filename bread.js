@@ -66,7 +66,7 @@ function createView() {
   const view = breadSteps.map(step => {
     return `<div class="${step.id} timeLineItem" style='width: ${step.time * 2}%'>
               <p>${step.name}</p>
-              <p>${step.time}</p>
+              <p>${step.time}hr/s</p>
             </div>`;
   });
 
