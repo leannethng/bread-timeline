@@ -7,25 +7,56 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="breadInputs">
-      <div class="breadInput">
-        <label for="prepTime">Prep</label>
-        <input type="number" id="prepTime" name="breadInputs" placeholder="0" />
-        hr/s
-      </div>
-      <div class="breadInput">
-        <label for="BulkFermTime">Bulk Fermentation</label>
-        <input
-          type="number"
-          id="BulkFermTime"
-          name="breadInputs"
-          placeholder="0"
-        />
-        hr/s
-      </div>
-      <div class="output"></div>
-    </div>
+    <form>
+      <div class="breadInputs">
+        <div class="breadInput startTime">
+          <label for="startTime">Time to start prep</label>
+          <input
+            type="number"
+            min="1"
+            max="12"
+            id="time"
+            name="breadInputs"
+            placeholder="0"
+          />
+          
+        </div>
+        <div class="breadInput">
+          <label for="prepTime">Prep</label>
+          <input type="range" min="0" max="2" id="prepTime" name="breadInputs" placeholder="0" value="0"/>
+          hr/s
+          
+        </div>
 
+        <div class="breadInput">
+          <label for="BulkFermTime">Bulk Fermentation</label>
+          <input
+          type="range" min="0" max="12"
+            id="BulkFermTime"
+            name="breadInputs"
+            placeholder="0"
+            value="0"
+          />
+        </div>
+        <div class="breadInput">
+          <label for="AnotherBreadStep">Another Bread Step</label>
+          <input
+          type="range" min="0" max="12"
+            id="AnotherBreadStep"
+            name="breadInputs"
+            placeholder="0"
+            value="0"
+          />
+          hr/s
+        </div>
+        <input type="reset" value="Reset">
+        <!-- <button id="btn" class="inputButton">Click to Add</button> -->
+      </div>
+    </form>
+    <ul class="timing">
+    </ul>
+  </div>
+    <div class="output"></div>
     <script src="bread.js"></script>
   </body>
 </html>

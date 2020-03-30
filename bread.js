@@ -1,82 +1,123 @@
+//creating li items for timeline
+const timeLine = document.querySelector(".timing");
 //creating div bars for timeline
-const output = document.querySelector('.output');
-
-//Grabbing the input values to use on the event listener
+const output = document.querySelector(".output");
+//Grabbing the input values
 const inputs = Array.from(document.querySelectorAll('[name="breadInputs"]'));
 
-//Grabbing individual inputs to match with the object values, this likely should be streamlined
-const prepTime = document.querySelector('#prepTime');
-const bulkFermTime = document.querySelector('#BulkFermTime');
+//Dataset
+let breadSteps = [
+  {
+    name: "Prep",
+    time: 0,
+    id: "prepTime"
+  },
+  {
+    name: "Bulk Fermentation",
+    time: 0,
+    id: "BulkFermTime"
+  },
+  {
+    name: "Another bread step",
+    time: 0,
+    id: "AnotherBreadStep"
+  }
+];
+
+let startTime = 1;
+
+function createView() {
+  // Summing the total hours to create the timeline
+  var timeLineHours = breadSteps.reduce(function(prev, cur) {
+    return prev + cur.time;
+  }, 0);
+
+  // Counter to help cycle through am/pm and to loop through 1-12
+  let counter = 0;
+  let am = "am"
+  let pm = "pm"
 
 
-// //Creating divs
-let prepDiv = document.createElement('div');prepDiv.classList.add('timeline');
-output.appendChild(prepDiv);
+  // Clear the timeLine.innerHTML so it refreshes rather than appends when looped through
+  timeLine.innerHTML = "";
 
-// let myDiv = document.createElement('div');
-// output.appendChild(myDiv);
 
-// My initial data object
-let breadSteps = {
-  prep: 0,
-  bulkFerm:0,
+
+  // Create timeline elements, likely li items for i in timeLineHours create a li
+  for(let i = 0; i < timeLineHours; i++){ 
+
+    //  amPm sets if the time is am or pm
+    let amPm = isEven(counter)
+    console.log(`amPm: ${amPm}`);
+
+    if(`${i + startTime}` <= 12){
+    timeLine.innerHTML += `<li class="hour">${i + startTime}${amPm}</li>`; } 
+    else {
+      timeLine.innerHTML += `<li class="hour">${(i + 
+      // Using the counter to flatten back down to 1-12
+      startTime-(12 * `${counter}`))}${amPm}</li>`;
+    };
+    // Set counter
+    if(`${i + startTime}` % 12 === 0){
+      counter ++; 
+    };
+
+    // using modulo to check for am or pm
+    // made an am/pm function so I can return the values to use above
+    // Need to assign variables here that i can tie to an input
+    function isEven(value){
+      if (value % 2 === 0)
+          return am;
+      else
+          return pm;
+    }
 };
 
-// Method for event listener action
-function saveInputs(e){
-  e.preventDefault(); //To stop the form submitting
   
-  // Saving over the values of each stage with the values entered into the input
-  breadSteps.prep = prepTime.value;
-  breadSteps.bulkFerm = bulkFermTime.value;
-
-  
-  // Logging the values for each input
-  inputs.forEach( function(input){
-    console.log(input.value)
-  //   myDiv.innerHTML = input.value;
-  //   myDiv.style.width = (input.value) + "%";
-  //  return myDiv
+  //Clear output div
+  output.innerHTML = "";
+  //Map through each object in data structure and return template 
+  const view = breadSteps.map(step => {
+    console.log(`stepTime: ${step.time}`)
+    if (step.time === 0){
+      return `<div class="${step.id} timeLineItem" style='display: none;'>
+    </div>`;
+    } else {
+    return `<div class="${step.id} timeLineItem" style='width: ${step.time * 4}%'>
+              <div class="timeLineBlock"></div>
+              <p>${step.name}</p>
+              <p>${step.time}hr/s</p>
+            </div>`;
+    }
   });
-  // console.log(myDiv)
 
+  // Add each template to the DOM
+  view.forEach(breadStep => {
+    output.innerHTML += breadStep;
+  });
+};
 
-  // Outputting the data, only hooked up to prepTime currently
- 
-  prepDiv.innerHTML = prepTime.value;
-  prepDiv.style.width = (prepTime.value * 2) + "%";
-  
-  // console.log(breadSteps);
-  
-  // returning the object with new values
-  return breadSteps;
+function updateView(event) {
+  // Loop through data structure, look for step that matches target, update time
+  breadSteps.forEach(step => {
+    if (event.target.id === step.id) {
+      step.time = parseInt(event.target.value) ;
+    }
+  });
+
+  // Time can then be a variable that will be changed with the start making parameter.
+  if (event.target.id === 'time') {
+    startTime = parseInt(event.target.value);
+    console.log(startTime);
+  }
+
+  // Recreate view once data structure has been updated
+  createView();
 }
 
-// Listening for input into the fields then running the saveInputs method
-inputs.forEach(input => input.addEventListener('input', saveInputs));
-
-console.log(breadSteps);
+// Create view on page load
+document.addEventListener("DOMContentLoaded", createView, false);
 
 
-//-------
-// Try to write out the data this with be the method for the event handler
-// function generateTimeline(data){
-//   const addDiv = document.createElement('p');
-//   addDiv.innerText = data.bulkFerm;
-// // for (value in breadSteps){  
-// // const addDiv = document.createElement('p');
-// // }
-// console.log(addDiv);
-// return addDiv;
-// }
-
-// const steps = generateTimeline(breadSteps);
-
-// output.insertAdjacentElement('afterbegin',steps );
-
-console.log(output)
-
-// I need to listen for the inputs for the creation of the divs too so they will update. 
-
-
-
+// Listening for input
+inputs.forEach(input => input.addEventListener("input", updateView));

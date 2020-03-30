@@ -1,15 +1,37 @@
 body {
   min-height: 100vh;
-  display: grid;
+  /* display: grid; */
   align-items: center;
 }
 
+input[type='range'] {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+datalist {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: -23px;
+  padding-top: 0px;
+}
+option {
+  width: 2ex;
+  display: flex;
+  justify-content: center;
+  height: 42px;
+  align-items: end;
+  background-image: url(tick.png);
+  height: 4ex;
+  background-position-y: -15px;
+  background-position-x: center;
+  z-index: -1;
+}
 .breadInputs {
-  position: fixed;
   top: 0;
   left: 0;
   width: 280px;
-  height: 100vh;
   padding: 40px;
   margin: 20px 0 0 0;
 }
@@ -31,8 +53,26 @@ label span {
   font-style: italic;
 }
 
-.timeline {
-  margin: 50px 0 0 0;
-  border: 1px solid #000;
+.output {
+  display: flex;
+  padding: 0 0 0 40px;
+}
+
+.timing {
+  display: flex;
+}
+
+.hour {
+  list-style: none;
+  width: 4%;
+}
+.timeLineItem {
+  border-right: 1px solid #000;
   width: 0%;
+}
+
+.timeLineBlock {
+  width: 100%;
+  height: 20px;
+  background-color: #20b2aa;
 }
