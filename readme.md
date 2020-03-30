@@ -1,8 +1,8 @@
 # Bread Timeline
 
-- A little app that lets you plug in the length of time of different stages of creating bread.
+- A little app that helps you time out the bread making process, it lets you set the length of time of different stages of creating bread to show the length of the process and helps you decide when to start prep given the time you'd like to bake it or vice versa.
 
-- I found when creating bread myself, I struggled to figure out what time to start each stage given the time I wanted to bake the bread and what time the bread would need to be baked given when I wanted ot start prep.
+- I found when creating bread, I struggled to figure out what time to start each stage given the time I wanted to bake the bread or what time the bread would need to be baked given when I wanted to start prep.
 
 - This app aims to give a visual representation of the bread making process with the parameters you give it.
 
