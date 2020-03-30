@@ -64,6 +64,7 @@ function createView() {
 
     // using modulo to check for am or pm
     // made an am/pm function so I can return the values to use above
+    // Need to assign variables here that i can tie to an input
     function isEven(value){
       if (value % 2 === 0)
           return am;
@@ -115,7 +116,7 @@ function updateView(event) {
 }
 
 // Create view on page load
-// document.addEventListener("DOMContentLoaded", createView, false);
+document.addEventListener("DOMContentLoaded", createView, false);
 
 
 // Listening for input
