@@ -64,7 +64,7 @@ label span {
 
 .hour {
   list-style: none;
-  width: 2%;
+  width: 4%;
 }
 .timeLineItem {
   border-right: 1px solid #000;
