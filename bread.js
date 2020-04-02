@@ -5,7 +5,7 @@ const output = document.querySelector(".output");
 //Grabbing the input values
 const inputs = Array.from(document.querySelectorAll('[name="breadInputs"]'));
 
-//Dataset
+// --- DATA ---
 let breadSteps = [
   {
     name: "Prep",
@@ -26,6 +26,7 @@ let breadSteps = [
 
 let startTime = 1;
 
+// --- CREATE VIEW ---
 function createView() {
   // Summing the total hours to create the timeline
   var timeLineHours = breadSteps.reduce(function(prev, cur) {
@@ -37,15 +38,11 @@ function createView() {
   let am = "am"
   let pm = "pm"
 
-
   // Clear the timeLine.innerHTML so it refreshes rather than appends when looped through
   timeLine.innerHTML = "";
 
-
-
   // Create timeline elements, likely li items for i in timeLineHours create a li
   for(let i = 0; i < timeLineHours; i++){ 
-
     //  amPm sets if the time is am or pm
     let amPm = isEven(counter)
     console.log(`amPm: ${amPm}`);
@@ -71,9 +68,8 @@ function createView() {
       else
           return pm;
     }
-};
+  };
 
-  
   //Clear output div
   output.innerHTML = "";
   //Map through each object in data structure and return template 
@@ -97,6 +93,8 @@ function createView() {
   });
 };
 
+
+// --- UPDATE VIEW ---
 function updateView(event) {
   // Loop through data structure, look for step that matches target, update time
   breadSteps.forEach(step => {
@@ -112,12 +110,17 @@ function updateView(event) {
   }
 
   // Recreate view once data structure has been updated
-  createView();
+  output.dispatchEvent(new CustomEvent('outputUpdated'));
+
 }
 
+
+//  --- EVENT LISTENERS ---
 // Create view on page load
 document.addEventListener("DOMContentLoaded", createView, false);
 
-
 // Listening for input
 inputs.forEach(input => input.addEventListener("input", updateView));
+
+// listen for change to create the view form the custom dispatch event
+output.addEventListener('outputUpdated',createView);
