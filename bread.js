@@ -25,6 +25,23 @@ let breadSteps = [
 ];
 
 let startTime = 1;
+let currentTime = undefined;
+
+  // made an am/pm function so I can return the values to use. Still need to assign variables here that i can tie to an input
+  function isEven(value){
+    let am = "am"
+    let pm = "pm"
+    console.log(`value: ${value} currentTime: ${currentTime}`);
+     if (value % 2 === 0 && currentTime == 12){
+      return pm;
+    } else if (currentTime == 12 && value % 2 === 1){
+      return am;
+    } else if (value % 2 === 0){
+      return am;
+    } else
+      return pm;
+  }
+
 
 // --- CREATE VIEW ---
 function createView() {
@@ -35,9 +52,7 @@ function createView() {
 
   // Counter to help cycle through am/pm and to loop through 1-12
   let counter = 0;
-  let am = "am"
-  let pm = "pm"
-
+ 
   // Clear the timeLine.innerHTML so it refreshes rather than appends when looped through
   timeLine.innerHTML = "";
 
@@ -45,8 +60,8 @@ function createView() {
   for(let i = 0; i < timeLineHours; i++){ 
     //  amPm sets if the time is am or pm
     let amPm = isEven(counter)
-    console.log(`amPm: ${amPm}`);
-
+    // console.log(`amPm: ${amPm}`);
+   
     if(`${i + startTime}` <= 12){
     timeLine.innerHTML += `<li class="hour">${i + startTime}${amPm}</li>`; } 
     else {
@@ -59,22 +74,16 @@ function createView() {
       counter ++; 
     };
 
-    // using modulo to check for am or pm
-    // made an am/pm function so I can return the values to use above
-    // Need to assign variables here that i can tie to an input
-    function isEven(value){
-      if (value % 2 === 0)
-          return am;
-      else
-          return pm;
-    }
+    currentTime = `${(i + startTime-(12 * `${counter}`)+ 1)}`;
+    
+
   };
 
   //Clear output div
   output.innerHTML = "";
   //Map through each object in data structure and return template 
   const view = breadSteps.map(step => {
-    console.log(`stepTime: ${step.time}`)
+    // console.log(`stepTime: ${step.time}`)
     if (step.time === 0){
       return `<div class="${step.id} timeLineItem" style='display: none;'>
     </div>`;
@@ -106,7 +115,7 @@ function updateView(event) {
   // Time can then be a variable that will be changed with the start making parameter.
   if (event.target.id === 'time') {
     startTime = parseInt(event.target.value);
-    console.log(startTime);
+    // console.log(startTime);
   }
 
   // Recreate view once data structure has been updated
