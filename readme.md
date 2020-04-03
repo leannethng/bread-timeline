@@ -13,7 +13,6 @@
 
 - The app will display a timeline of the stages and the timings.
 
-
 ## Still to do
 
 - [ ] Add a toggle for Am/Pm
@@ -21,15 +20,20 @@
 - [ ] Reset sliders on page refresh
 - [ ] Different colors for different time segments
 
-
 ## Things I have learnt
 
 - DOM Manipulation
 - Working with objects and arrays
-- Itterating and looping through data
+- Iterating and looping through data
 
-## Good links I used to help me 
+## Notes
+
+[More notes about it here](notes.md)
+
+## Links I used to help me
 
 - [Learn JS Data](http://learnjsdata.com/iterate_data.html)
 - [input-to-object gist](https://gist.github.com/prof3ssorSt3v3/52ebd432bb7b8a155985a2f82509541d)
 - [Change the value of an object inside an array](https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/45341595)
+- [Am and PM time](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson4.html)
+- [How to convert 24hr into 12hr](https://medium.com/front-end-weekly/how-to-convert-24-hours-format-to-12-hours-in-javascript-ca19dfd7419d)
