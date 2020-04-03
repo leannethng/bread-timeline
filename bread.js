@@ -34,7 +34,7 @@ let currentTime = undefined;
     console.log(`value: ${value} currentTime: ${currentTime}`);
      if (value % 2 === 0 && currentTime == 12){
       return pm;
-    } else if (currentTime == 12 && value % 2 === 1){
+    } else if (value % 2 === 1 && currentTime == 12){
       return am;
     } else if (value % 2 === 0){
       return am;
@@ -56,6 +56,7 @@ function createView() {
   // Clear the timeLine.innerHTML so it refreshes rather than appends when looped through
   timeLine.innerHTML = "";
 
+  // Should I create up to 24 then say from 1-11 = AM, 12 = PM, 1-23 = PM, 24 = AM
   // Create timeline elements, likely li items for i in timeLineHours create a li
   for(let i = 0; i < timeLineHours; i++){ 
     //  amPm sets if the time is am or pm
@@ -63,18 +64,21 @@ function createView() {
     // console.log(`amPm: ${amPm}`);
    
     if(`${i + startTime}` <= 12){
+      // console.log(`first loop: ${i + startTime}${amPm}`);
     timeLine.innerHTML += `<li class="hour">${i + startTime}${amPm}</li>`; } 
     else {
       timeLine.innerHTML += `<li class="hour">${(i + 
       // Using the counter to flatten back down to 1-12
       startTime-(12 * `${counter}`))}${amPm}</li>`;
     };
-    // Set counter
+    // Set counter - the counter ticks up by 1 every time the time / 12 equals 0
     if(`${i + startTime}` % 12 === 0){
       counter ++; 
     };
 
+    console.log(currentTime)
     currentTime = `${(i + startTime-(12 * `${counter}`)+ 1)}`;
+    
     
 
   };
